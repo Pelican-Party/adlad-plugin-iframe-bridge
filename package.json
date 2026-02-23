@@ -1,0 +1,20 @@
+{
+	"name": "@adlad/plugin-iframe-bridge",
+	"version": "0.0.1",
+	"description": "AdLad plugin that allows you to host your game on your own domain even when portals require you to upload a zipped index.html.",
+	"main": "mod.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Pelican-Party/adlad-plugin-iframe-bridge.git"
+	},
+	"keywords": [
+		"ads",
+		"adlad"
+	],
+	"author": "Pelican Party Studios",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Pelican-Party/adlad-plugin-iframe-bridge/issues"
+	},
+	"homepage": "https://github.com/Pelican-Party/adlad-plugin-iframe-bridge#readme"
+}

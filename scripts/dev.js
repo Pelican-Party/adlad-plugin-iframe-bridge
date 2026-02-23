@@ -4,6 +4,7 @@ import { generateTypes } from "https://deno.land/x/deno_tsc_helper@v0.7.0/mod.js
 import { AdLad } from "$adlad";
 
 import { setCwd } from "$chdir_anywhere";
+import { installDependencies } from "./installDependencies.js";
 setCwd(import.meta.url);
 Deno.chdir("..");
 
@@ -15,3 +16,5 @@ generateTypes({
 		"src",
 	],
 });
+
+await installDependencies();
