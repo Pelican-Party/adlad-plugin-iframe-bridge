@@ -6,6 +6,7 @@ import { rollup } from "npm:rollup@3.17.3";
 import { minify } from "npm:terser@5.15.0";
 import * as path from "$std/path/mod.ts";
 import { setCwd } from "$chdir_anywhere";
+import { installDependencies } from "./installDependencies.js";
 
 await installDependencies();
 
