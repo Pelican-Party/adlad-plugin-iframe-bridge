@@ -16,10 +16,12 @@ export function iframeBridgePlugin() {
 			}
 
 			messenger.setSendHandler((data) => {
-				window.parent.postMessage(data.sendData, "*", data.transfer);
+				window.parent.postMessage({ adLadIframeBridgeMessage: data.sendData }, "*", data.transfer);
 			});
 			globalThis.addEventListener("message", (event) => {
-				messenger.handleReceivedMessage(event.data);
+				if (typeof event.data == "object" && event.data && "adLadIframeBridgeMessage" in event.data) {
+					messenger.handleReceivedMessage(event.data.adLadIframeBridgeMessage);
+				}
 			});
 			messenger.setResponseHandlers({
 				/**
