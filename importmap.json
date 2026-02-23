@@ -1,0 +1,7 @@
+{
+	"imports": {
+		"$std/path/": "https://jsr.io/@std/path/1.1.4/",
+		"$chdir_anywhere": "https://deno.land/x/chdir_anywhere@v0.0.2/mod.js",
+		"$adlad": "npm:@adlad/adlad@1.0.0"
+	}
+}
