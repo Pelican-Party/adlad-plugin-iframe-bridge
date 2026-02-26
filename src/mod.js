@@ -8,6 +8,7 @@ const props = /** @type {const} */ ({
 	init: "init",
 	showFullScreenAd: "showFullScreenAd",
 	gameplayStart: "gameplayStart",
+	success: "success",
 });
 
 // @ts-ignore We want to make sure that `props` remains an object.
@@ -74,7 +75,7 @@ export function iframeBridgePlugin() {
 			if (!initResult) {
 				throw new Error("Parent window responded with an unknown response during initialization");
 			}
-			if (!initResult.success) {
+			if (!initResult[props.success]) {
 				throw new Error("Parrent window responded with an error");
 			}
 		},
