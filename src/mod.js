@@ -38,7 +38,7 @@ export function iframeBridgePlugin() {
 				window.parent.postMessage({ [props.adLadIframeBridgeMessage]: data.sendData }, "*", data.transfer);
 			});
 			globalThis.addEventListener("message", (event) => {
-				if (typeof event.data == "object" && event.data && "adLadIframeBridgeMessage" in event.data) {
+				if (typeof event.data == "object" && event.data && props.adLadIframeBridgeMessage in event.data) {
 					messenger.handleReceivedMessage(event.data[props.adLadIframeBridgeMessage]);
 				}
 			});
