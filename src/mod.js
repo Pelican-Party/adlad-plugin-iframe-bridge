@@ -7,6 +7,7 @@ const props = /** @type {const} */ ({
 	setNeedsPause: "setNeedsPause",
 	init: "init",
 	showFullScreenAd: "showFullScreenAd",
+	gameplayStart: "gameplayStart",
 });
 
 // @ts-ignore We want to make sure that `props` remains an object.
@@ -76,6 +77,9 @@ export function iframeBridgePlugin() {
 			if (!initResult.success) {
 				throw new Error("Parrent window responded with an error");
 			}
+		},
+		async gameplayStart() {
+			return await messenger.send[props.gameplayStart]();
 		},
 		async showFullScreenAd() {
 			return await messenger.send[props.showFullScreenAd]();
