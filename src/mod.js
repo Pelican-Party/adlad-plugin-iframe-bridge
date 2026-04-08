@@ -9,6 +9,8 @@ const props = /** @type {const} */ ({
 	showFullScreenAd: "showFullScreenAd",
 	gameplayStart: "gameplayStart",
 	success: "success",
+	customRequest: "customRequest",
+	getActivePlugin: "getActivePlugin",
 });
 
 // @ts-ignore We want to make sure that `props` remains an object.
@@ -23,6 +25,12 @@ if (props > 0) console.log(props);
 
 export function iframeBridgePlugin() {
 	const messenger = new TypedMessenger();
+
+	const customRequests = {
+		async getIframeBridgePlugin() {
+			return await messenger.send[props.getActivePlugin]();
+		},
+	};
 
 	const plugin = /** @type {const} @satisfies {import("$adlad").AdLadPlugin} */ ({
 		name: "iframe-bridge",
@@ -85,6 +93,18 @@ export function iframeBridgePlugin() {
 		async showFullScreenAd() {
 			return await messenger.send[props.showFullScreenAd]();
 		},
+		customRequests: /** @type {Object.<string, () => any>} */ (new Proxy(customRequests, {
+			get: (target, command, receiver) => {
+				if (command in target) {
+					return Reflect.get(target, command, receiver);
+				}
+				/** @type {(...args: any) => Promise<any>} */
+				const fn = async (...args) => {
+					return await messenger.send[props.customRequest](command, args);
+				};
+				return fn;
+			},
+		})),
 	});
 
 	return plugin;
