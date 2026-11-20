@@ -11,6 +11,8 @@ const props = /** @type {const} */ ({
 	success: "success",
 	customRequest: "customRequest",
 	getActivePlugin: "getActivePlugin",
+	setStorageItem: "setStorageItem",
+	getStorageItem: "getStorageItem",
 });
 
 // @ts-ignore We want to make sure that `props` remains an object.
@@ -92,6 +94,12 @@ export function iframeBridgePlugin() {
 		},
 		async showFullScreenAd() {
 			return await messenger.send[props.showFullScreenAd]();
+		},
+		async setStorageItem(key, value){
+			return await messenger.send[props.setStorageItem](key, value);
+		},
+		async getStorageItem(key){
+			return await messenger.send[props.getStorageItem](key);
 		},
 		customRequests: /** @type {Object.<string, () => any>} */ (new Proxy(customRequests, {
 			get: (target, command, receiver) => {
