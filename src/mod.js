@@ -95,10 +95,10 @@ export function iframeBridgePlugin() {
 		async showFullScreenAd() {
 			return await messenger.send[props.showFullScreenAd]();
 		},
-		async setStorageItem(key, value){
+		async setStorageItem(key, value) {
 			return await messenger.send[props.setStorageItem](key, value);
 		},
-		async getStorageItem(key){
+		async getStorageItem(key) {
 			return await messenger.send[props.getStorageItem](key);
 		},
 		customRequests: /** @type {Object.<string, () => any>} */ (new Proxy(customRequests, {
